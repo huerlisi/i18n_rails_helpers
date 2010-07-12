@@ -69,7 +69,7 @@ module I18nRailsHelpers
   #   t_confirm_delete(@account) => 'Konto Kasse wirklich löschen'
   #
   def t_confirm_delete(record)
-    I18n::translate('messages.confirm_delete', :record => "#{t_model(record.class)} #{record.to_s}")
+    I18n::translate('messages.confirm_delete', :model => t_model(record), :record => record.to_s)
   end
 end
 
