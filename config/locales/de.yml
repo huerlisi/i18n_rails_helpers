@@ -1,4 +1,4 @@
-de-CH:
+de:
   messages:
     confirm_delete: "%{model} %{record} wirklich löschen?"
 
