@@ -13,6 +13,8 @@ module I18nRailsHelpers
       model_name = model.name.underscore
     elsif model.nil?
       model_name = controller_name.singularize
+    else
+      model_name = model.class.name.underscore
     end
     I18n::translate(model_name, :scope => [:activerecord, :models])
   end
