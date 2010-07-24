@@ -1,3 +1,5 @@
+require 'i18n_rails_helpers/railtie' if defined?(::Rails::Railtie)
+
 module I18nRailsHelpers
   # Returns translated name for the given +attribute+.
   #
