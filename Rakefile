@@ -4,7 +4,7 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 begin
-  GEM = "has_delegates"
+  GEM = "i18n_rails_helpers"
   AUTHOR = "Simon Hürlimann"
   EMAIL = "simon.huerlimann@cyt.ch"
   SUMMARY = "Rails i18n view helpers for things like crud actions, models and and attributes."
