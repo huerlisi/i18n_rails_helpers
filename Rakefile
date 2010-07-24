@@ -22,7 +22,7 @@ begin
     s.author = AUTHOR
     
     s.require_path = 'lib'
-    s.files = %w(MIT-LICENSE README Rakefile) + Dir.glob("{lib,test,rails}/**/*")
+    s.files = %w(MIT-LICENSE README Rakefile) + Dir.glob("{lib,test,rails,config}/**/*")
     
     # Runtime dependencies: When installing i18n_rails_helpers these will be checked if they are installed.
     # Will be offered to install these if they are not already installed.
