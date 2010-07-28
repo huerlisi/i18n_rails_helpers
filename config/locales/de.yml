@@ -3,6 +3,7 @@ de:
     confirm_delete: "%{model} %{record} wirklich löschen?"
 
   crud:
+    index: "%{model} Liste"
     edit: "%{model} bearbeiten"
     show: "%{model} anzeigen"
     new:  "%{model} anlegen"
