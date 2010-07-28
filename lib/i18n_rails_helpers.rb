@@ -53,14 +53,8 @@ module I18nRailsHelpers
   #   t_crud                  => 'Konto ändern'  # when called in accounts_controller edit view
   #
   def t_crud(action = nil, model = nil)
-    if model.is_a? Class
-      model_name = model.name.underscore
-    elsif model.nil?
-      model_name = controller_name.singularize
-    end
-    
     action ||= action_name
-    I18n::translate(action, :scope => :crud, :model => model_name.capitalize)
+    I18n::translate(action, :scope => :crud, :model => t_model(model))
   end
   
   # Returns translated deletion confirmation for +record+.
