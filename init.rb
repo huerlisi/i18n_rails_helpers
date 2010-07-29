@@ -1,2 +1,2 @@
 # Include hook code here
-ActionController::Base.helper I18nRailsHelpers
+ActionView::Base.send :include, I18nRailsHelpers
