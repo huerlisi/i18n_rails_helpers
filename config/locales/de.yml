@@ -7,4 +7,5 @@ de:
     edit:  "%{model} bearbeiten"
     show:  "%{model} anzeigen"
     new:   "%{model} anlegen"
+    delete: "%{model} löschen"
     back:  "zurück"

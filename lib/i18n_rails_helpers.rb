@@ -47,6 +47,9 @@ module I18nRailsHelpers
   # If no +model+ is given, it uses the controller name to guess the model by
   # singularize it. +model+ can be both a class or an actual instance.
   #
+  # The translation file comming with the plugin supports the following actions
+  # by default: index, edit, show, new, delete, back
+  #
   # Example:
   #   t_crud('new', Account') => 'Konto anlegen'
   #   t_crud('delete')        => 'Konto löschen' # when called in accounts_controller views
