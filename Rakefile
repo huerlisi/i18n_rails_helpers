@@ -26,7 +26,7 @@ begin
     
     # Runtime dependencies: When installing i18n_rails_helpers these will be checked if they are installed.
     # Will be offered to install these if they are not already installed.
-    s.add_dependency 'activemodel'
+    s.add_dependency 'activerecord'
     s.add_dependency 'i18n'
   end
   
