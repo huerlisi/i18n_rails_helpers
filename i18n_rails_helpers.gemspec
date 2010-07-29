@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n_rails_helpers}
-  s.version = "0.7.1"
+  s.version = "0.7.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simon H\303\274rlimann"]
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
      "README.markdown",
      "Rakefile",
      "config/locales/de.yml",
+     "init.rb",
      "lib/i18n_rails_helpers.rb",
      "lib/i18n_rails_helpers/railtie.rb",
      "test/i18n_rails_helpers_test.rb",
