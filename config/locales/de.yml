@@ -3,9 +3,19 @@ de:
     confirm_delete: "%{model} %{record} wirklich löschen?"
 
   crud:
-    index: "%{model} Liste"
-    edit:  "%{model} bearbeiten"
-    show:  "%{model} anzeigen"
-    new:   "%{model} anlegen"
-    delete: "%{model} löschen"
-    back:  "zurück"
+    title:
+      index:  "%{model} Liste"
+      edit:   "%{model} bearbeiten"
+      show:   "%{model} anzeigen"
+      new:    "%{model} anlegen"
+      delete: "%{model} löschen"
+      back:   "Zurück"
+    action:
+      index:  "Liste"
+      edit:   "Bearbeiten"
+      show:   "Anzeigen"
+      new:    "Anlegen"
+      delete: "Löschen"
+      back:   "Zurück"
+
+

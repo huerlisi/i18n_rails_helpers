@@ -51,13 +51,30 @@ module I18nRailsHelpers
   # by default: index, edit, show, new, delete, back
   #
   # Example:
-  #   t_crud('new', Account') => 'Konto anlegen'
-  #   t_crud('delete')        => 'Konto löschen' # when called in accounts_controller views
-  #   t_crud                  => 'Konto ändern'  # when called in accounts_controller edit view
+  #   t_title('new', Account') => 'Konto anlegen'
+  #   t_title('delete')        => 'Konto löschen' # when called in accounts_controller views
+  #   t_title                  => 'Konto ändern'  # when called in accounts_controller edit view
   #
-  def t_crud(action = nil, model = nil)
+  def t_title(action = nil, model = nil)
     action ||= action_name
-    I18n::translate(action, :scope => :crud, :model => t_model(model))
+    I18n::translate(action, :scope => 'crud.title', :model => t_model(model))
+  end
+  alias :t_crud :t_title
+  
+  # Returns translated string for current +action+.
+  #
+  # If no +action+ is given, it uses the current action.
+  #
+  # The translation file comming with the plugin supports the following actions
+  # by default: index, edit, show, new, delete, back
+  #
+  # Example:
+  #   t_action('delete')        => 'Löschen'
+  #   t_action                  => 'Ändern'  # when called in an edit view
+  #
+  def t_action(action = nil, model = nil)
+    action ||= action_name
+    I18n::translate(action, :scope => 'crud.action', :model => t_model(model))
   end
   
   # Returns translated deletion confirmation for +record+.
