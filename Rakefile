@@ -22,7 +22,7 @@ begin
     s.author = AUTHOR
     
     s.require_path = 'lib'
-    s.files = %w(MIT-LICENSE README Rakefile) + Dir.glob("{lib,test,rails,config}/**/*")
+    s.files = %w(MIT-LICENSE README.markdown Rakefile) + Dir.glob("{lib,test,rails,config}/**/*")
     
     # Runtime dependencies: When installing i18n_rails_helpers these will be checked if they are installed.
     # Will be offered to install these if they are not already installed.
@@ -51,6 +51,6 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'I18nRailsHelpers'
   rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('README.markdown')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
