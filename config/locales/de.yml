@@ -8,6 +8,7 @@ de:
       edit:   "%{model} bearbeiten"
       show:   "%{model} anzeigen"
       new:    "%{model} anlegen"
+      update: "%{model} ändern"
       delete: "%{model} löschen"
       back:   "Zurück"
     action:
@@ -15,6 +16,7 @@ de:
       edit:   "Bearbeiten"
       show:   "Anzeigen"
       new:    "Anlegen"
+      update: "Ändern"
       delete: "Löschen"
       back:   "Zurück"
 
