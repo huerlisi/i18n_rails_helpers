@@ -65,8 +65,8 @@ module I18nRailsHelpers
   #
   # If no +action+ is given, it uses the current action.
   #
-  # The translation file comming with the plugin supports the following actions
-  # by default: index, edit, show, new, delete, back
+  # The translation file comes with the plugin supports the following actions
+  # by default: index, edit, show, new, delete, back, next, previous
   #
   # Example:
   #   t_action('delete')        => 'Löschen'

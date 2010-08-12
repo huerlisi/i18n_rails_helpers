@@ -19,5 +19,5 @@ de-CH:
       update: "Ändern"
       delete: "Löschen"
       back:   "Zurück"
-
-
+      previous: "Zurück"
+      next:   "Weiter"
