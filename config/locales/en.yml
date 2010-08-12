@@ -10,7 +10,6 @@ en:
       new:    "New %{model}"
       update: "Update %{model}"
       delete: "Delete %{model}"
-      back:   "Back"
     action:
       index:    "Index"
       edit:     "Edit"

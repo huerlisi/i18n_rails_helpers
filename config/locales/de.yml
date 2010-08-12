@@ -10,7 +10,6 @@ de:
       new:    "%{model} anlegen"
       update: "%{model} ändern"
       delete: "%{model} löschen"
-      back:   "Zurück"
     action:
       index:    "Liste"
       edit:     "Bearbeiten"

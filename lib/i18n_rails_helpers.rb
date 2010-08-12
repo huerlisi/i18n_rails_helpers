@@ -48,7 +48,7 @@ module I18nRailsHelpers
   # singularize it. +model+ can be both a class or an actual instance.
   #
   # The translation file comming with the plugin supports the following actions
-  # by default: index, edit, show, new, delete, back
+  # by default: index, edit, show, new, delete
   #
   # Example:
   #   t_title('new', Account') => 'Konto anlegen'
@@ -88,4 +88,3 @@ module I18nRailsHelpers
     I18n::translate('messages.confirm_delete', :model => t_model(record), :record => record.to_s)
   end
 end
-
