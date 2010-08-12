@@ -1,0 +1,23 @@
+en:
+  messages:
+    confirm_delete: "Really delete %{model} %{record}?"
+
+  crud:
+    title:
+      index:  "%{model} index"
+      edit:   "Edit %{model}"
+      show:   "Show %{model}"
+      new:    "New %{model}"
+      update: "Update %{model}"
+      delete: "Delete %{model}"
+      back:   "Back"
+    action:
+      index:    "Index"
+      edit:     "Edit"
+      show:     "Show"
+      new:      "New"
+      update:   "Update"
+      delete:   "Delete"
+      back:     "Back"
+      previous: "Previous"
+      next:     "Next"
