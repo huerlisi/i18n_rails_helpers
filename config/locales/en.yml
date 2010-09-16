@@ -8,6 +8,7 @@ en:
       edit:   "Edit %{model}"
       show:   "Show %{model}"
       new:    "New %{model}"
+      create: "New %{model}"
       update: "Update %{model}"
       delete: "Delete %{model}"
     action:
