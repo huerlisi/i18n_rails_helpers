@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n_rails_helpers}
-  s.version = "0.8.2"
+  s.version = "0.9.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simon H\303\274rlimann"]
-  s.date = %q{2010-09-23}
+  s.date = %q{2010-12-14}
   s.description = %q{Rails i18n view helpers for things like crud actions, models and and attributes.}
   s.email = %q{simon.huerlimann@cyt.ch}
   s.extra_rdoc_files = [
@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
      "config/locales/de-CH.yml",
      "config/locales/de.yml",
      "config/locales/en.yml",
+     "lib/contextual_link_helpers.rb",
      "lib/i18n_rails_helpers.rb",
      "lib/i18n_rails_helpers/railtie.rb",
      "rails/init.rb",
@@ -34,8 +35,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Rails i18n view helpers for things like crud actions, models and and attributes.}
   s.test_files = [
-    "test/test_helper.rb",
-     "test/i18n_rails_helpers_test.rb"
+    "test/i18n_rails_helpers_test.rb",
+     "test/test_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
