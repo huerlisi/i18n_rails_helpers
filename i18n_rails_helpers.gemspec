@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n_rails_helpers}
-  s.version = "0.9.1"
+  s.version = "0.9.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Simon H\303\274rlimann"]
-  s.date = %q{2010-12-28}
+  s.date = %q{2011-01-05}
   s.description = %q{Rails i18n view helpers for things like crud actions, models and and attributes.}
   s.email = %q{simon.huerlimann@cyt.ch}
   s.extra_rdoc_files = [
