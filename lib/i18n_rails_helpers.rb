@@ -1,6 +1,15 @@
 require 'i18n_rails_helpers/railtie' if defined?(::Rails::Railtie)
 
 module I18nRailsHelpers
+  # Returns translated identifier
+  def t_page_head
+    if params[:id] and resource
+      return "%s %s" % [t_title, resource.to_s]
+    else
+      return t_title
+    end
+  end
+
   # Returns translated name for the given +attribute+.
   #
   # If no +model+ is given, it uses the controller name to guess the model by
