@@ -6,7 +6,7 @@ module ListLinkHelpers
     link_to(t_action(action), url, options)
   end
   
-  def list_link_for(action, resource_or_model = nil)
+  def list_link_for(action, resource_or_model = nil, options = {})
     # Handle both symbols and strings
     action = action.to_s
     
@@ -34,12 +34,15 @@ module ListLinkHelpers
     # Link generation
     case action
     when 'index', 'show'
-      return list_link_to(action, polymorphic_path(resource_or_model))
+      path = polymorphic_path(resource_or_model)
     when 'delete'
-      return list_link_to(action, polymorphic_path(resource_or_model), :confirm => t_confirm_delete(resource), :method => :delete)
+      path = polymorphic_path(resource_or_model)
+      options.merge!(:confirm => t_confirm_delete(resource), :method => :delete)
     else
-      return list_link_to(action, polymorphic_path(resource_or_model, :action => action))
+      path = polymorphic_path(resource_or_model, :action => action)
     end
+    
+    return list_link_to(action, path, options)
   end
   
   def list_links_for(action = nil, resource_or_model = nil)
