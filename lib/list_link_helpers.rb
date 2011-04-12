@@ -33,16 +33,12 @@ module ListLinkHelpers
     
     # Link generation
     case action
-    when 'new'
-      return list_link_to(action, polymorphic_path(resource_or_model, :action => :new))
-    when 'show'
+    when 'index', 'show'
       return list_link_to(action, polymorphic_path(resource_or_model))
-    when 'edit'
-      return list_link_to(action, polymorphic_path(resource_or_model, :action => :edit))
     when 'delete'
       return list_link_to(action, polymorphic_path(resource_or_model), :confirm => t_confirm_delete(resource), :method => :delete)
-    when 'index'
-      return list_link_to(action, polymorphic_path(resource_or_model))
+    else
+      return list_link_to(action, polymorphic_path(resource_or_model, :action => action))
     end
   end
   
