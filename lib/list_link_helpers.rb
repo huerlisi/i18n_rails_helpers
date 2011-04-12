@@ -11,12 +11,19 @@ module ListLinkHelpers
     action = action.to_s
     
     # Resource and Model setup
+    # Support nested resources
+    if resource_or_model.is_a? Array
+      main_resource_or_model = resource_or_model.first
+    else
+      main_resource_or_model = resource_or_model
+    end
+    
     # Use controller name to guess resource or model if not specified
     case action
     when 'new', 'index'
-      model = resource_or_model || controller_name.singularize.camelize.constantize
+      model = main_resource_or_model || controller_name.singularize.camelize.constantize
     when 'show', 'edit', 'delete'
-      resource = resource_or_model || instance_variable_get("@#{controller_name.singularize}")
+      resource = main_resource_or_model || instance_variable_get("@#{controller_name.singularize}")
       model = resource.class
     end
     model_name = model.to_s.underscore
@@ -27,15 +34,15 @@ module ListLinkHelpers
     # Link generation
     case action
     when 'new'
-      return list_link_to(action, send("new_#{model_name}_path"))
+      return list_link_to(action, polymorphic_path(resource_or_model, :action => :new))
     when 'show'
-      return list_link_to(action, send("#{model_name}_path", resource))
+      return list_link_to(action, polymorphic_path(resource_or_model))
     when 'edit'
-      return list_link_to(action, send("edit_#{model_name}_path", resource))
+      return list_link_to(action, polymorphic_path(resource_or_model, :action => :edit))
     when 'delete'
-      return list_link_to(action, send("#{model_name}_path", resource), :confirm => t_confirm_delete(resource), :method => :delete)
+      return list_link_to(action, polymorphic_path(resource_or_model), :confirm => t_confirm_delete(resource), :method => :delete)
     when 'index'
-      return list_link_to(action, send("#{model_name.pluralize}_path"))
+      return list_link_to(action, polymorphic_path(resource_or_model))
     end
   end
   
