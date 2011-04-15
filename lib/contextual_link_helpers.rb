@@ -1,9 +1,10 @@
 module ContextualLinkHelpers
   # CRUD helpers
-  def icon_link_to(action, url, options = {})
+  def icon_link_to(action, url = nil, options = {})
+    url ||= {:action => action}
     options.merge!(:class => "icon icon-#{action}")
     
-    link_to(t_action(action), url, options)
+    link_to(t_action(action), url_for(url), options)
   end
   
   def contextual_link_to(action, resource_or_model = nil)
