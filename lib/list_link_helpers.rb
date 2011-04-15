@@ -29,7 +29,7 @@ module ListLinkHelpers
     model_name = model.to_s.underscore
     
     # No link if CanCan is used and current user isn't authorized to call this action
-    return if respond_to?(:can?) and ! can?(action.to_sym, model)
+    return if respond_to?(:can?) and cannot?(action.to_sym, model)
     
     # Link generation
     case action
