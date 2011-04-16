@@ -1,9 +1,11 @@
 PATH
   remote: .
   specs:
-    i18n_rails_helpers (0.13.0)
+    i18n_rails_helpers (0.14.0)
       activerecord
       i18n
+      i18n_rails_helpers
+      rails (~> 3.0.0)
 
 GEM
   remote: http://rubygems.org/
