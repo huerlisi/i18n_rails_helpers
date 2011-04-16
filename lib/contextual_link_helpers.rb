@@ -7,7 +7,7 @@ module ContextualLinkHelpers
     link_to(t_action(action), url_for(url), options)
   end
   
-  def contextual_link_to(action, resource_or_model = nil)
+  def contextual_link_to(action, resource_or_model = nil, options = {})
     # Handle both symbols and strings
     action = action.to_s
     
@@ -25,19 +25,35 @@ module ContextualLinkHelpers
     # No link if CanCan is used and current user isn't authorized to call this action
     return if respond_to?(:can?) and cannot?(action.to_sym, model)
     
-    # Link generation
+    # Option generation
     case action
-    when 'new'
-      return icon_link_to(action, send("new_#{model_name}_path"))
-    when 'show'
-      return icon_link_to(action, send("#{model_name}_path", resource))
-    when 'edit'
-      return icon_link_to(action, send("edit_#{model_name}_path", resource))
     when 'delete'
-      return icon_link_to(action, send("#{model_name}_path", resource), :confirm => t_confirm_delete(resource), :method => :delete)
-    when 'index'
-      return icon_link_to(action, send("#{model_name.pluralize}_path"))
+      options.merge!(:confirm => t_confirm_delete(resource), :method => :delete)
     end
+
+    # Path generation
+    case action
+    when 'index'
+      if model
+        path = polymorphic_path(model)
+      else
+        path = url_for(:action => nil)
+      end
+    when 'show', 'delete'
+      if resource
+        path = polymorphic_path(resource)
+      else
+        return
+      end
+    else
+      if resource_or_model
+        path = polymorphic_path(resource_or_model, :action => action)
+      else
+        path = url_for(:action => action)
+      end
+    end
+
+    return icon_link_to(action, path, options)
   end
   
   def contextual_links_for(action = nil, resource_or_model = nil)
