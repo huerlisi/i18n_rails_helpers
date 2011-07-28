@@ -11,7 +11,6 @@ gem 'rails', '~> 3.0.0'
 # Development
 # ===========
 group :development do
-  gem "jeweler"
 end
 
 # Test
