@@ -10,7 +10,8 @@ gem 'rails', '~> 3.0.0'
 
 # Development
 # ===========
-group :development do
+group :development, :test do
+  gem "rake"
 end
 
 # Test
