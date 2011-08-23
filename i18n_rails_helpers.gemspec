@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary      = "I18n Rails helpers"
   s.description  = "Rails i18n view helpers for things like crud actions, models and and attributes."
 
-  s.files        = `git ls-files app lib config`.split("\n")
+  s.files        = `git ls-files rails app lib config`.split("\n")
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
 
