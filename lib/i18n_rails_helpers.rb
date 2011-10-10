@@ -59,6 +59,11 @@ module I18nRailsHelpers
   # The translation file comming with the plugin supports the following actions
   # by default: index, edit, show, new, delete
   #
+  # You may provide controller specific titles in the translation file. The keys
+  # should have the following format:
+  #
+  #   #{controller_name}.#{action}.title
+  #
   # Example:
   #   t_title('new', Account') => 'Konto anlegen'
   #   t_title('delete')        => 'Konto löschen' # when called in accounts_controller views
@@ -66,7 +71,7 @@ module I18nRailsHelpers
   #
   def t_title(action = nil, model = nil)
     action ||= action_name
-    I18n::translate(action, :scope => 'crud.title', :model => t_model(model))
+    I18n::translate("#{controller_name.underscore}.#{action}.title", :default => [:"crud.title.#{action}"], :model => t_model(model))
   end
   alias :t_crud :t_title
   
