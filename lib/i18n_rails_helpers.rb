@@ -21,11 +21,11 @@ module I18nRailsHelpers
   #
   def t_attr(attribute, model = nil)
     if model.is_a? Class
-      model_name = model.name.underscore
+      model_class = model
     elsif model.nil?
-      model_name = controller_name.singularize
+      model_class = controller_name.classify.constantize
     end
-    I18n::translate(attribute, :scope => [:activerecord, :attributes, model_name])
+    model_class.human_attribute_name(attribute)
   end
 
   # Returns translated name for the given +model+.
