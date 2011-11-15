@@ -23,7 +23,7 @@ module ContextualLinkHelpers
     model_name = model.to_s.underscore
     
     # No link if CanCan is used and current user isn't authorized to call this action
-    return if respond_to?(:can?) and cannot?(action.to_sym, model)
+    return if respond_to?(:cannot?) and cannot?(action.to_sym, model)
     
     # Option generation
     case action
