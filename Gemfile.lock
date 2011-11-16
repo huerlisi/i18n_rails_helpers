@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    i18n_rails_helpers (0.14.1)
+    i18n_rails_helpers (0.17.0)
 
 GEM
   remote: http://rubygems.org/
