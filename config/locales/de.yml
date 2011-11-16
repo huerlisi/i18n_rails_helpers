@@ -1,6 +1,7 @@
 de:
   messages:
     confirm_delete: "%{model} %{record} wirklich löschen?"
+    select_prompt:  "%{model} auswählen"
 
   crud:
     title:

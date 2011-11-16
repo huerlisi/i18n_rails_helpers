@@ -101,4 +101,15 @@ module I18nRailsHelpers
   def t_confirm_delete(record)
     I18n::translate('messages.confirm_delete', :model => t_model(record), :record => record.to_s)
   end
+
+  # Returns translated drop down field prompt for +model+.
+  #
+  # If no +model+ is given, it tries to guess it from the controller.
+  #
+  # Example:
+  #   t_select_prompt(Account) => 'Konto auswählen'
+  #
+  def t_select_prompt(model = nil)
+    I18n::translate('messages.select_prompt', :model => t_model(model))
+  end
 end
