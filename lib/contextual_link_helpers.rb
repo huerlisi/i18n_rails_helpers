@@ -12,6 +12,8 @@ module ContextualLinkHelpers
       "trash"
     when "index", "list"
       "list-alt"
+    when "update"
+      "refresh"
     end
   end
 
