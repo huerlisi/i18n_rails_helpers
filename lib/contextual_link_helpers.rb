@@ -72,7 +72,7 @@ module ContextualLinkHelpers
     return icon_link_to(action, path, options)
   end
   
-  def contextual_links_for(action = nil, resource_or_model = nil)
+  def contextual_links_for(action = nil, resource_or_model = nil, options = {})
     # Use current action if not specified
     action ||= action_name
     
@@ -91,14 +91,14 @@ module ContextualLinkHelpers
       actions << 'new'
     end
     
-    links = actions.map{|link_for| contextual_link_to(link_for, resource_or_model)}
+    links = actions.map{|link_for| contextual_link_to(link_for, resource_or_model, options)}
     
     return links.join("\n").html_safe
   end
   
-  def contextual_links(action = nil, resource_or_model = nil)
+  def contextual_links(action = nil, resource_or_model = nil, options = {})
     content_tag('div', :class => 'contextual') do
-      contextual_links_for(action, resource_or_model)
+      contextual_links_for(action, resource_or_model, options)
     end
   end
 end
