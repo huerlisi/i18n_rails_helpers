@@ -71,7 +71,13 @@ module I18nRailsHelpers
   #
   def t_title(action = nil, model = nil)
     action ||= action_name
-    I18n::translate("#{controller_name.underscore}.#{action}.title", :default => [:"crud.title.#{action}"], :model => t_model(model))
+    if model
+      context = model.name.pluralize.underscore
+    else
+      context = controller_name.underscore
+    end
+
+    I18n::translate("#{context}.#{action}.title", :default => [:"crud.title.#{action}"], :model => t_model(model))
   end
   alias :t_crud :t_title
   
