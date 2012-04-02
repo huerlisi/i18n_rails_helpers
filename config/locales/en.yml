@@ -1,6 +1,7 @@
 en:
   messages:
     confirm_delete: "Really delete %{model} %{record}?"
+    select_prompt:  "Select %{model}"
 
   crud:
     title:
