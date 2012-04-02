@@ -1,7 +1,7 @@
 module ContextualLinkHelpers
   # CRUD helpers
   def action_to_icon(action)
-    case action
+    case action.to_s
     when 'new'
       "plus"
     when 'show'
