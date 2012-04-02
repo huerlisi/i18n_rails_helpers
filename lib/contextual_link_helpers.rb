@@ -1,10 +1,26 @@
 module ContextualLinkHelpers
   # CRUD helpers
+  def action_to_icon(action)
+    case action
+    when 'new'
+      "plus"
+    when 'show'
+      "eye-open"
+    when 'edit'
+      "edit"
+    when 'delete'
+      "trash"
+    when "index", "list"
+      "list-alt"
+    end
+  end
+
   def icon_link_to(action, url = nil, options = {})
     url ||= {:action => action}
-    options.merge!(:class => "icon icon-#{action}")
-    
-    link_to(t_action(action), url_for(url), options)
+    options.merge!(:class => "btn")
+    link_to(url_for(url), options) do 
+      content_tag(:i, "", :class => "icon-#{action_to_icon(action)}") + " " + t_action(action)
+    end
   end
   
   def contextual_link_to(action, resource_or_model = nil, options = {})
