@@ -25,7 +25,10 @@ module ContextualLinkHelpers
     end
   end
   
-  def contextual_link_to(action, resource_or_model = nil, options = {})
+  def contextual_link_to(action, resource_or_model = nil, link_options = {})
+    # We don't want to change the passed in link_options
+    options = link_options.dup
+
     # Handle both symbols and strings
     action = action.to_s
     
