@@ -14,6 +14,8 @@ module ContextualLinkHelpers
       "list-alt"
     when "update"
       "refresh"
+    else
+      action
     end
   end
 
