@@ -16,6 +16,8 @@ module ContextualLinkHelpers
       "refresh"
     when "copy"
       "repeat"
+    else
+      action
     end
   end
 
