@@ -13,7 +13,7 @@ module ListLinkHelpers
     # Resource and Model setup
     # Support nested resources
     if resource_or_model.is_a? Array
-      main_resource_or_model = resource_or_model.first
+      main_resource_or_model = resource_or_model.last
     else
       main_resource_or_model = resource_or_model
     end
@@ -37,7 +37,7 @@ module ListLinkHelpers
       path = polymorphic_path(resource_or_model)
     when 'delete'
       path = polymorphic_path(resource_or_model)
-      options.merge!(:confirm => t_confirm_delete(resource), :method => :delete)
+      options.merge!(:confirm => t_confirm_delete(main_resource_or_model), :method => :delete)
     else
       path = polymorphic_path(resource_or_model, :action => action)
     end
