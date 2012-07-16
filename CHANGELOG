@@ -1,0 +1,4 @@
+1.0.4
+=====
+Bugfixes:
+* Fix support for nested resource in list_link_for.
