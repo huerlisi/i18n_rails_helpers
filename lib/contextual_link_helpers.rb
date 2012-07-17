@@ -22,12 +22,17 @@ module ContextualLinkHelpers
   end
 
   def icon_link_to(action, url = nil, options = {})
+    classes = ["btn"]
+
     url ||= {:action => action}
 
     icon = options.delete(:icon)
     icon ||= action
 
-    options.merge!(:class => "btn")
+    type = options.delete(:type)
+    classes << "btn-#{type}"
+
+    options.merge!(:class => classes.join(" "))
     link_to(url_for(url), options) do 
       content_tag(:i, "", :class => "icon-#{action_to_icon(icon)}") + " " + t_action(action)
     end
