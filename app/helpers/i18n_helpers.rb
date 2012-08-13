@@ -1,6 +1,4 @@
-require 'i18n_rails_helpers/railtie' if defined?(::Rails::Railtie)
-
-module I18nRailsHelpers
+module I18nHelpers
   # Returns translated identifier
   def t_page_head
     if params[:id] and resource

@@ -1,14 +1,11 @@
-require 'i18n_rails_helpers'
-require 'contextual_link_helpers'
-require 'list_link_helpers'
 require 'rails'
 
 module I18nRailsHelpers
   class Railtie < Rails::Engine
-    initializer :after_initialize do
-      ActionController::Base.helper I18nRailsHelpers
-      ActionController::Base.helper ContextualLinkHelpers
-      ActionController::Base.helper ListLinkHelpers
+    initializer 'i18n_rails_helpers.helper' do
+      ActionView::Base.send :include, I18nHelpers
+      ActionView::Base.send :include, ContextualLinkHelpers
+      ActionView::Base.send :include, ListLinkHelpers
     end
   end
 end
