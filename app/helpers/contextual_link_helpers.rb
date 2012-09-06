@@ -22,7 +22,12 @@ module ContextualLinkHelpers
   end
 
   def icon_link_to(action, url = nil, options = {})
-    classes = ["btn"]
+    classes = []
+    if class_options = options.delete(:class)
+      classes << class_options.split(' ')
+    end
+
+    classes << "btn"
 
     url ||= {:action => action}
 
