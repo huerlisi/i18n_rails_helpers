@@ -1,3 +1,11 @@
+1.0.8
+=====
+* Support both string and symbol as first parameter to icon_link_to.
+
+1.0.7
+=====
+* Support passing in a :class param as option in icon_link_to.
+
 1.0.6
 =====
 Refactoring helper initialization.
