@@ -1,3 +1,8 @@
+1.0.9
+=====
+* Only add btn-#{type} class to icon links if type is given.
+* Accept block in contextual_links helper.
+
 1.0.8
 =====
 * Support both string and symbol as first parameter to icon_link_to.
