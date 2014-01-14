@@ -124,9 +124,14 @@ module ContextualLinkHelpers
     return links.join("\n").html_safe
   end
 
-  def contextual_links(action = nil, resource_or_model = nil, options = {})
+  def contextual_links(action = nil, resource_or_model = nil, options = {}, &block)
     content_tag('div', :class => 'contextual') do
-      contextual_links_for(action, resource_or_model, options)
+      content = contextual_links_for(action, resource_or_model, options)
+      if block_given?
+        additional_content = capture(&block)
+        content += ("\n" + additional_content).html_safe
+      end
+      content
     end
   end
 end
