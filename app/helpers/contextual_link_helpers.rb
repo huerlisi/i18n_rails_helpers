@@ -40,7 +40,7 @@ module ContextualLinkHelpers
     icon ||= action
 
     type = options.delete(:type)
-    classes << "btn-#{type}"
+    classes << "btn-#{type}" unless type.blank?
 
     options.merge!(:class => classes.join(" "))
     link_to(url_for(url), options) do
