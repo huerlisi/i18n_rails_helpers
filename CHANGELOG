@@ -1,3 +1,14 @@
+1.1.0
+=====
+We start supporting configurations for contextual links.
+
+Use this to configure I18nRailsHelpers in an initializer:
+
+  I18nRailsHelpers.setup do |config|
+    config.contextual_class = 'pull-right'
+    config.contextual_link_class = 'btn-sm'
+  end
+
 1.0.9
 =====
 * Only add btn-#{type} class to icon links if type is given.

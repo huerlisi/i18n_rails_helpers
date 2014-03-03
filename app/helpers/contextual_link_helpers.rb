@@ -27,7 +27,7 @@ module ContextualLinkHelpers
       classes << class_options.split(' ')
     end
 
-    classes << "btn"
+    classes << I18nRailsHelpers.contextual_link_class
 
     if action.is_a? Symbol
       url ||= {:action => action}
@@ -125,7 +125,7 @@ module ContextualLinkHelpers
   end
 
   def contextual_links(action = nil, resource_or_model = nil, options = {}, &block)
-    content_tag('div', :class => 'contextual') do
+    content_tag('div', :class => I18nRailsHelpers.contextual_class) do
       content = contextual_links_for(action, resource_or_model, options)
       if block_given?
         additional_content = capture(&block)
