@@ -59,10 +59,14 @@ module ContextualLinkHelpers
     # Use controller name to guess resource or model if not specified
     case action
     when :new, :index
-      model = resource_or_model || controller_name.singularize.camelize.constantize
+      default_model = controller_name.singularize.camelize.constantize
+      model = resource_or_model || default_model
+      explicit_resource_or_model = default_model != model
     when :show, :edit, :delete
-      resource = resource_or_model || instance_variable_get("@#{controller_name.singularize}")
+      default_resource = instance_variable_get("@#{controller_name.singularize}")
+      resource = resource_or_model || default_resource
       model = resource.class
+      explicit_resource_or_model = default_resource != resource
     end
     model_name = model.to_s.underscore
 
@@ -78,19 +82,19 @@ module ContextualLinkHelpers
     # Path generation
     case action
     when :index
-      if model
+      if explicit_resource_or_model
         path = polymorphic_path(model)
       else
         path = url_for(:action => nil)
       end
-    when :show, :delete
-      if resource
+    when :delete, :destroy
+      if explicit_resource_or_model
         path = polymorphic_path(resource)
       else
-        return
+        path = url_for(:action => :destroy)
       end
     else
-      if resource_or_model
+      if explicit_resource_or_model
         path = polymorphic_path(resource_or_model, :action => action)
       else
         path = url_for(:action => action)
