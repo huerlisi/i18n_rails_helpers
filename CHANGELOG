@@ -1,3 +1,11 @@
+1.2.0
+=====
+Contextual link helpers now only sets action.
+
+This allows you to use those helpers in namespaced resource controllers.
+When the resource or model is passed in, it does not add a namespace
+though.
+
 1.1.0
 =====
 We start supporting configurations for contextual links.
