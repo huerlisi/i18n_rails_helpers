@@ -1,9 +1,38 @@
 module ListLinkHelpers
+  def action_to_icon(action)
+    case action.to_s
+    when 'new'
+      "plus"
+    when 'show'
+      "eye-open"
+    when 'edit'
+      "edit"
+    when 'delete'
+      "trash"
+    when "index", "list"
+      "list-alt"
+    when "update"
+      "refresh"
+    when "copy"
+      "repeat"
+    else
+      action
+    end
+  end
+
   # List link helpers
   def list_link_to(action, url, options = {})
-    options.merge!(:class => "icon-#{action}-text", :title => t_action(action))
-    
-    link_to(t_action(action), url, options)
+    classes = []
+    if class_options = options.delete(:class)
+      classes << class_options.split(' ')
+    end
+
+    icon = options.delete(:icon)
+    icon ||= action
+
+    link_to(url_for(url), options) do
+      content_tag(:i, "", :class => "icon-#{action_to_icon(icon)}")
+    end
   end
 
   def list_link_for(action, resource_or_model = nil, options = {})
