@@ -79,29 +79,34 @@ module ContextualLinkHelpers
       options.merge!(:confirm => t_confirm_delete(resource), :method => :delete)
     end
 
-    # Path generation
-    case action
-    when :index
-      if explicit_resource_or_model
-        path = polymorphic_path(model)
+    begin
+      # Path generation
+      case action
+      when :index
+        if explicit_resource_or_model
+          path = polymorphic_path(model)
+        else
+          path = url_for(:action => nil)
+        end
+      when :delete, :destroy
+        if explicit_resource_or_model
+          path = polymorphic_path(resource)
+        else
+          path = url_for(:action => :destroy)
+        end
       else
-        path = url_for(:action => nil)
+        if explicit_resource_or_model
+          path = polymorphic_path(resource_or_model, :action => action)
+        else
+          path = url_for(:action => action)
+        end
       end
-    when :delete, :destroy
-      if explicit_resource_or_model
-        path = polymorphic_path(resource)
-      else
-        path = url_for(:action => :destroy)
-      end
-    else
-      if explicit_resource_or_model
-        path = polymorphic_path(resource_or_model, :action => action)
-      else
-        path = url_for(:action => action)
-      end
-    end
 
-    return icon_link_to(action, path, options)
+      return icon_link_to(action, path, options)
+
+    rescue ActionController::UrlGenerationError
+      # This handles cases where we did exclude crud actions in the routing map.
+    end
   end
 
   def contextual_links_for(action = nil, resource_or_model = nil, options = {})
