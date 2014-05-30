@@ -1,3 +1,7 @@
+1.4.5
+=====
+* boot_page_title helper now accepts block.
+
 1.4.4
 =====
 * Revert some changes that broke translation support.
