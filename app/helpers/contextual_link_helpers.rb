@@ -70,8 +70,10 @@ module ContextualLinkHelpers
     end
     model_name = model.to_s.underscore
 
-    # No link if CanCan is used and current user isn't authorized to call this action
-    return if respond_to?(:cannot?) and cannot?(action.to_sym, model)
+    unless resource_or_model.is_a?(String)
+      # No link if CanCan is used and current user isn't authorized to call this action
+      return if respond_to?(:cannot?) and cannot?(action.to_sym, model)
+    end
 
     # Option generation
     case action
@@ -80,25 +82,29 @@ module ContextualLinkHelpers
     end
 
     begin
-      # Path generation
-      case action
-      when :index
-        if explicit_resource_or_model
-          path = polymorphic_path(model)
-        else
-          path = url_for(:action => nil)
-        end
-      when :delete, :destroy
-        if explicit_resource_or_model
-          path = polymorphic_path(resource)
-        else
-          path = url_for(:action => :destroy)
-        end
+      if resource_or_model.is_a?(String)
+        path = resource_or_model
       else
-        if explicit_resource_or_model
-          path = polymorphic_path(resource_or_model, :action => action)
+        # Path generation
+        case action
+        when :index
+          if explicit_resource_or_model
+            path = polymorphic_path(model)
+          else
+            path = url_for(:action => nil)
+          end
+        when :delete, :destroy
+          if explicit_resource_or_model
+            path = polymorphic_path(resource)
+          else
+            path = url_for(:action => :destroy)
+          end
         else
-          path = url_for(:action => action)
+          if explicit_resource_or_model
+            path = polymorphic_path(resource_or_model, :action => action)
+          else
+            path = url_for(:action => action)
+          end
         end
       end
 
