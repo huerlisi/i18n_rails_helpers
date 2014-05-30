@@ -55,6 +55,18 @@ module BootstrapHelper
 
   # Messages
   # ========
+  # Map common rails flash types to bootstrap alert names.
+  def boot_alert_name(type)
+    case type
+    when 'alert'
+      'danger'
+    when 'notice'
+      'info'
+    else
+      type
+    end
+  end
+
   def boot_alert(*args, &block)
     if block_given?
       type = args[0]
@@ -65,7 +77,7 @@ module BootstrapHelper
     end
 
     type ||= 'info'
-    content_tag(:div, :class => "alert alert-block alert-#{type} fade in") do
+    content_tag(:div, :class => "alert alert-#{boot_alert_name(type)}") do
       link_to('&times;'.html_safe, '#', :class => 'close', 'data-dismiss' => 'alert') + content
     end
   end
