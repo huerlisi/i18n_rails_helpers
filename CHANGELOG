@@ -1,3 +1,7 @@
+1.4.0
+=====
+We now also include application view templates and bootstrap helpers.
+
 1.3.1
 =====
 * Handles cases where we did exclude crud actions in the routing map.
