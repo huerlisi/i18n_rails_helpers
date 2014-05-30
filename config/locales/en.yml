@@ -20,6 +20,7 @@ en:
       show:     "Show"
       new:      "New"
       delete:   "Delete"
+      destroy:  "Delete"
       back:     "Back"
       previous: "Previous"
       next:     "Next"

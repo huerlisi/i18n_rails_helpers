@@ -20,6 +20,7 @@ de:
       show:     "Anzeigen"
       new:      "Erfassen"
       delete:   "Löschen"
+      destroy:  "Löschen"
       back:     "Zurück"
       previous: "Zurück"
       next:     "Weiter"
