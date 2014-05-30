@@ -1,13 +1,17 @@
 module BootstrapHelper
-  def boot_page_title(action_or_title = nil, model = nil)
-    if action_or_title.is_a? String
-      title = action_or_title
+  def boot_page_title(action_or_title = nil, model = nil, &block)
+    if block_given?
+      title = capture(&block)
     else
-      action = action_or_title || action_name
-      if action.to_s == 'show' && defined?(resource) && resource.present?
-        title = resource.to_s
+      if action_or_title.is_a? String
+        title = action_or_title
       else
-        title = t_title(action, model)
+        action = action_or_title || action_name
+        if action.to_s == 'show' && defined?(resource) && resource.present?
+          title = resource.to_s
+        else
+          title = t_title(action, model)
+        end
       end
     end
 
