@@ -12,6 +12,7 @@ de:
       new:    "%{model} erfassen"
       create: "%{model} erfassen"
       delete: "%{model} löschen"
+      destroy: "%{model} löschen"
     action:
       index:    "Liste"
       edit:     "Bearbeiten"
