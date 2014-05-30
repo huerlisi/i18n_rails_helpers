@@ -1,4 +1,11 @@
+require 'boot_form_builder'
+
 module BootstrapHelper
+  def boot_form_for(object, *args, &block)
+    options = args.extract_options!
+    simple_form_for(object, *(args << options.merge(builder: BootFormBuilder)), &block)
+  end
+
   def boot_page_title(action_or_title = nil, model = nil, &block)
     if block_given?
       title = capture(&block)
