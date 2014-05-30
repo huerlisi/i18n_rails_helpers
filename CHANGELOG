@@ -1,3 +1,7 @@
+1.4.8
+=====
+* Map common rails flash types to bootstrap alert names.
+
 1.4.7
 =====
 * Support display_name in boot_page_title if provided.
