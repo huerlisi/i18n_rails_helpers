@@ -62,7 +62,7 @@ module ContextualLinkHelpers
       default_model = controller_name.singularize.camelize.constantize
       model = resource_or_model || default_model
       explicit_resource_or_model = default_model != model
-    when :show, :edit, :delete
+    when :show, :edit, :delete, :destroy
       default_resource = instance_variable_get("@#{controller_name.singularize}")
       resource = resource_or_model || default_resource
       model = resource.class
@@ -75,7 +75,7 @@ module ContextualLinkHelpers
 
     # Option generation
     case action
-    when :delete
+    when :delete, :destroy
       options.merge!(:confirm => t_confirm_delete(resource), :method => :delete)
     end
 
@@ -121,9 +121,9 @@ module ContextualLinkHelpers
     when :new, :create
       actions << :index
     when :show
-      actions += [:edit, :delete, :index]
+      actions += [:edit, :destroy, :index]
     when :edit, :update
-      actions += [:show, :delete, :index]
+      actions += [:show, :destroy, :index]
     when :index
       actions << :new
     end
