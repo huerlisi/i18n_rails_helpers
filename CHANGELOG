@@ -1,14 +1,18 @@
+1.4.3
+=====
+*  Only use pagination if present. 
+
 1.4.2
 =====
-Use destroy instead of delete action to fix cancan support.
+* Use destroy instead of delete action to fix cancan support.
 
 1.4.1
 =====
-Actually do include the 1.4.0 features.
+* Actually do include the 1.4.0 features.
 
 1.4.0
 =====
-We now also include application view templates and bootstrap helpers.
+* We now also include application view templates and bootstrap helpers.
 
 1.3.1
 =====
