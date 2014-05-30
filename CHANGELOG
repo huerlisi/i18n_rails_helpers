@@ -1,3 +1,7 @@
+1.4.1
+=====
+Actually do include the 1.4.0 features.
+
 1.4.0
 =====
 We now also include application view templates and bootstrap helpers.
