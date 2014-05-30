@@ -78,7 +78,7 @@ module I18nHelpers
     I18n::translate("#{context}.#{action}.title", :default => [:"crud.title.#{action}"], :model => t_model(model))
   end
   alias :t_crud :t_title
-  
+
   # Returns translated string for current +action+.
   #
   # If no +action+ is given, it uses the current action.
@@ -94,7 +94,7 @@ module I18nHelpers
     action ||= action_name
     I18n::translate(action, :scope => 'crud.action', :model => t_model(model))
   end
-  
+
   # Returns translated deletion confirmation for +record+.
   #
   # It uses +record+.to_s in the message.
