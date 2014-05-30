@@ -1,3 +1,7 @@
+1.4.9
+=====
+* Handle strings as second parameter to contextual_link_to.
+
 1.4.8
 =====
 * Map common rails flash types to bootstrap alert names.
