@@ -1,3 +1,7 @@
+1.4.12
+======
+* Add destroy action translations.
+
 1.4.11
 ======
 * Add german translation for destroy action.
@@ -32,7 +36,7 @@
 
 1.4.3
 =====
-*  Only use pagination if present. 
+* Only use pagination if present.
 
 1.4.2
 =====
