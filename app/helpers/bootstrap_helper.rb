@@ -15,7 +15,8 @@ module BootstrapHelper
       else
         action = action_or_title || action_name
         if action.to_s == 'show' && defined?(resource) && resource.present?
-          title = resource.to_s
+          title = resource.display_name if resource.respond_to?(:display_name)
+          title ||= resource.to_s
         else
           title = t_title(action, model)
         end
