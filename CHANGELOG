@@ -1,3 +1,7 @@
+1.4.4
+=====
+* Revert some changes that broke translation support.
+
 1.4.3
 =====
 *  Only use pagination if present. 
