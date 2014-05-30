@@ -12,6 +12,7 @@ en:
       new:    "New %{model}"
       create: "New %{model}"
       delete: "Delete %{model}"
+      destroy: "Delete %{model}"
     action:
       index:    "Index"
       edit:     "Edit"
