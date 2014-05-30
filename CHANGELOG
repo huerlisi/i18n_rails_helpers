@@ -1,3 +1,7 @@
+1.4.11
+======
+* Add german translation for destroy action.
+
 1.4.10
 ======
 * Add destroy action translation.
@@ -36,7 +40,7 @@
 
 1.4.1
 =====
-* Actually do include the 1.4.0 features.
+* actually do include the 1.4.0 features.
 
 1.4.0
 =====
