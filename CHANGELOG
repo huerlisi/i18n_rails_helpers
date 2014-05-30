@@ -1,3 +1,7 @@
+1.4.2
+=====
+Use destroy instead of delete action to fix cancan support.
+
 1.4.1
 =====
 Actually do include the 1.4.0 features.
