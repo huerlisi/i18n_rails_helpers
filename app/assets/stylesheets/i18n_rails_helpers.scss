@@ -1,0 +1,12 @@
+// Fix spacing for contextual buttons on page headers
+.ctx {
+  float: right;
+}
+
+.ctx-page-header, .ctx-h1, .ctx-h2, .ctx-h3, .ctx-h4 {
+  margin-top: 5px;
+}
+
+.page-header {
+  margin-top: 0;
+}
