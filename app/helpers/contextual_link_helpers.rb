@@ -44,7 +44,7 @@ module ContextualLinkHelpers
 
     options.merge!(:class => classes.join(" "))
     link_to(url_for(url), options) do
-      content_tag(:i, "", :class => "icon-#{action_to_icon(icon)}") + " " + title
+      boot_icon(action_to_icon(icon)) + " " + title
     end
   end
 
