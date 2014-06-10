@@ -32,7 +32,8 @@ module BootstrapHelper
   # Icons
   # =====
   def boot_icon(type)
-    content_tag(:i, '', :class => "icon-#{type}")
+    classes = I18nRailsHelpers.boot_icon_class_template % [type]
+    content_tag(:i, '', :class => classes)
   end
 
   # Labels

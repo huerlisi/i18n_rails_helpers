@@ -24,4 +24,8 @@ module I18nRailsHelpers
   # CSS class to use for contextual links
   mattr_accessor :contextual_link_class
   @@contextual_link_class = 'btn'
+
+  # Bootstrap icon class
+  mattr_accessor :boot_icon_class_template
+  @@boot_icon_class_template = 'icon icon-%s '
 end
