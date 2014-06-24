@@ -31,7 +31,7 @@ module ListLinkHelpers
     icon ||= action
 
     link_to(url_for(url), options) do
-      content_tag(:i, "", :class => "icon-#{action_to_icon(icon)}")
+      boot_icon action_to_icon(icon)
     end
   end
 
