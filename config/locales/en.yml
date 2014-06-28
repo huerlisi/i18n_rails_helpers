@@ -19,6 +19,7 @@ en:
       update:   "Edit"
       show:     "Show"
       new:      "New"
+      create:   "New"
       delete:   "Delete"
       destroy:  "Delete"
       back:     "Back"
