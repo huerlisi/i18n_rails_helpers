@@ -1,8 +1,16 @@
 I18nRailsHelpers
 ================
 
+[![Build Status](https://secure.travis-ci.org/huerlisi/i18n_rails_helpers.png)](http://travis-ci.org/huerlisi/i18n_rails_helpers)
+
 Rails i18n view helpers for things like crud actions, models and and attributes.
 
+Install
+=======
+
+In Rails simply add
+
+    gem 'i18n_rails_helpers'
 
 Example
 =======
