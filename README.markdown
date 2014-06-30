@@ -13,8 +13,7 @@ Example
  t_action('index')             => 'Liste'
  t_confirm_delete(@account)    => 'Konto Kasse wirklich löschen'
 
-
-Copyright (c) 2010 Simon Hürlimann <simon.huerlimann@cyt.ch>
-Copyright (c) 2010 CyT <http://www.cyt.ch>
+License
+=======
 
 Released under the MIT license.
