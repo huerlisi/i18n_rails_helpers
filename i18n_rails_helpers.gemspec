@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.require_path = 'lib'
 
-  s.extra_rdoc_files = ["README.markdown"]
+  s.extra_rdoc_files = ["README.md"]
 end
