@@ -1,37 +1,19 @@
-# Settings
-# ========
-source :rubygems
+source 'https://rubygems.org'
 
+# Declare your gem's dependencies in has_vcards.gemspec.
+# Bundler will treat runtime dependencies like base dependencies, and
+# development dependencies will be added by default to the :development group.
 gemspec
 
-# Rails
-# =====
-gem 'rails', '~> 3.0.0'
+# Declare any dependencies that are still in development here instead of in
+# your gemspec. These might include edge Rails or gems from your path or
+# Git. Remember to move these dependencies to your gemspec before releasing
+# your gem to rubygems.org.
 
-# Development
-# ===========
-group :development, :test do
-  gem "rake"
-end
+group :tools do
+  # Debugger
+  gem 'pry-rails'
 
-# Test
-# ====
-group :test do
-  # Framework
-  gem "rspec"
-  gem "rspec-rails"
-
-  # Browser
-  gem "capybara"
-
-  # Fixtures
-  # gem "factory_girl_rails", "~>1.1"
-
-  # Matchers/Helpers
-  gem 'shoulda'
-  gem 'accept_values_for'
-
-  # Autotest
-  gem 'autotest'
-  gem 'autotest-rails'
+  # QA
+  gem 'rubocop'
 end
