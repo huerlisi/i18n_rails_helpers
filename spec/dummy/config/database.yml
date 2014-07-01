@@ -1,0 +1,37 @@
+# This is to allow testing on different DB systems by setting
+# the DB environment variable.
+#
+# MySQL and Postgresql username and password are set to
+# match expecations on Travis-CI to simplify automatic testing.
+#
+# Set the DB environment variable when running specs etc.
+#
+# sqlite3 is the default.
+
+sqlite: &sqlite
+  adapter: sqlite3
+  database: db/test.sqlite3
+
+mysql: &mysql
+  adapter: mysql2
+  username: root
+  password:
+  database: has_vcard_test
+
+postgresql: &postgresql
+  adapter: postgresql
+  username: postgres
+  password:
+  database: has_vcard_test
+
+test:
+  pool: 5
+  timeout: 5000
+  host: localhost
+  <<: *<%= ENV['DB'] || 'sqlite' %>
+
+development:
+  pool: 5
+  timeout: 5000
+  host: localhost
+  <<: *<%= ENV['DB'] || 'mysql' %>
