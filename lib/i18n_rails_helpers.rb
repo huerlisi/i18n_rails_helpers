@@ -1,4 +1,4 @@
-require 'i18n_rails_helpers/railtie' if defined?(::Rails::Railtie)
+require 'i18n_rails_helpers/engine'
 
 module I18nRailsHelpers
   # Configuration
