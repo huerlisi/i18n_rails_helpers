@@ -1,6 +1,8 @@
 2.0.0.beta0 (unreleased)
 ===========
-Major refactoring.
+This is a major release bringing lots of cleanups. And of course some big features:
+* Compatibility with Rails 4.x
+* A spec suite, continuously running on Travis CI
 
 1.4.12
 ======
