@@ -1,3 +1,3 @@
 module I18nRailsHelpers
-  VERSION = "1.4.12"
+  VERSION = "2.0.0.beta0"
 end
