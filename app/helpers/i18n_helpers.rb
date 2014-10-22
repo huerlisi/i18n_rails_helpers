@@ -37,7 +37,11 @@ module I18nHelpers
   #   t_model              => 'Konto' # when called in patients_controller views
   #
   def t_model(model = nil)
-    if model.is_a? Class
+    if model.is_a? ActiveModel::Naming
+      return model.model_name.human
+    elsif model.class.is_a? ActiveModel::Naming
+      return model.class.model_name.human
+    elsif model.is_a? Class
       model_name = model.name.underscore
     elsif model.nil?
       model_name = controller_name.singularize
