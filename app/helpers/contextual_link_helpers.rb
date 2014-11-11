@@ -144,7 +144,7 @@ module ContextualLinkHelpers
       content = contextual_links_for(action, resource_or_model, options)
       if block_given?
         additional_content = capture(&block)
-        content += ("\n" + additional_content).html_safe
+        content += ("\n" + additional_content).html_safe unless additional_content.nil?
       end
       content
     end
