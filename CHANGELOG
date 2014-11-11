@@ -1,3 +1,14 @@
+2.0.0.beta1
+===========
+We dropped the hard dependency on the simple_form gem while still supporting it. The t_model helper handles
+some more cases, and a first bug has been fixed with acompining specs.
+
+* Use model_name.human in t_model. Thanks to Markus Koller <markus-koller@gmx.ch>
+* Bring Gemfile.lock up to date.
+* Drop hard dependency on simple_form gem.
+* Fix contextual_links helper method to handle block returning nil.
+* Add spec to test for contextual_links method properly handling nil block. Reported by Beat Seeliger <seb@panter.ch>
+
 2.0.0.beta0
 ===========
 This is a major release bringing lots of cleanups. And of course some big features:
