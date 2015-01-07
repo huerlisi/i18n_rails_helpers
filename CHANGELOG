@@ -1,3 +1,8 @@
+2.0.0.beta2 (unreleased)
+===========
+* Use Ruby 2.2.0 on travis.
+* Sync Gemfile with has_vcards and update all gems.
+
 2.0.0.beta1
 ===========
 We dropped the hard dependency on the simple_form gem while still supporting it. The t_model helper handles
