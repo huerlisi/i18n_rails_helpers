@@ -1,7 +1,9 @@
-2.0.0.beta2 (unreleased)
+2.0.0.beta2
 ===========
 * Use Ruby 2.2.0 on travis.
 * Sync Gemfile with has_vcards and update all gems.
+* Drop leftover VERSION in root directory.
+* Add locale for cancel crud action.
 
 2.0.0.beta1
 ===========
