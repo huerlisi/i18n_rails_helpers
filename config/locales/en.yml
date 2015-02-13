@@ -22,6 +22,7 @@ en:
       create:   "New"
       delete:   "Delete"
       destroy:  "Delete"
+      cancel:   "Abbrechen"
       back:     "Back"
       previous: "Previous"
       next:     "Next"
