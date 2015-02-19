@@ -1,24 +1,5 @@
 module ListLinkHelpers
-  def action_to_icon(action)
-    case action.to_s
-    when 'new'
-      "plus"
-    when 'show'
-      "eye-open"
-    when 'edit'
-      "edit"
-    when 'delete'
-      "trash"
-    when "index", "list"
-      "list-alt"
-    when "update"
-      "refresh"
-    when "copy"
-      "repeat"
-    else
-      action
-    end
-  end
+  include ContextualLinkHelpers
 
   # List link helpers
   def list_link_to(action, url, options = {})
