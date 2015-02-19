@@ -8,7 +8,7 @@ module ContextualLinkHelpers
       "eye-open"
     when 'edit'
       "edit"
-    when 'delete'
+    when 'delete', 'destroy'
       "trash"
     when "index", "list"
       "list-alt"
