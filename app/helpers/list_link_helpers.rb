@@ -3,11 +3,6 @@ module ListLinkHelpers
 
   # List link helpers
   def list_link_to(action, url, options = {})
-    classes = []
-    if class_options = options.delete(:class)
-      classes << class_options.split(' ')
-    end
-
     icon = options.delete(:icon)
     icon ||= action
 
