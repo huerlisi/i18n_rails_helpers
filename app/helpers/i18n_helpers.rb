@@ -36,7 +36,7 @@ module I18nHelpers
   #   t_model(Account.new) => 'Konto'
   #   t_model              => 'Konto' # when called in patients_controller views
   #
-  def t_model(model = nil)
+  def t_model(model = nil, count = 1)
     if model.is_a? ActiveModel::Naming
       return model.model_name.human
     elsif model.class.is_a? ActiveModel::Naming
@@ -48,7 +48,7 @@ module I18nHelpers
     else
       model_name = model.class.name.underscore
     end
-    I18n::translate(model_name, :scope => [:activerecord, :models])
+    I18n::translate(model_name, :scope => [:activerecord, :models], count: count)
   end
 
   # Returns translated title for current +action+ on +model+.
