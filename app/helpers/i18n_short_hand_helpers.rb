@@ -1,4 +1,4 @@
-module I18nShortHandHelper
+module I18nShortHandHelpers
   # Shorthand of t_title(:index)
   #
   # If no +model+ is given, it uses the controller name to guess the model by
@@ -80,8 +80,15 @@ module I18nShortHandHelper
   alias :t_destroy :t_delete
 
   def shorthand_title(action, model)
-    return t_title(action) if model.nil?
-    t_title(action, model)
+    return handle_capitalization(t_title(action)) if model.nil?
+    handle_capitalization(t_title(action, model))
+  end
+
+  # handles only capitalizing the first letter in english
+  #
+  def handle_capitalization(title)
+    return title.capitalize if locale.to_s == 'en'
+    title
   end
 
   # Shorthand of t_action(:index)
