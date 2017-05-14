@@ -37,10 +37,9 @@ module I18nHelpers
   #   t_model             => 'Kunde'  # when called in clients_controller views
   #
   # using pluralization:
-  #   t_model(Client, 2)  => 'Kunden'
   #   t_model(count:2)    => 'Kunden' # when called in clients_controller views
   #
-  def t_model(model: nil, count: 1)
+  def t_model(model = nil, count: 1)
     if model.is_a? ActiveModel::Naming
       return model.model_name.human
     elsif model.class.is_a? ActiveModel::Naming
