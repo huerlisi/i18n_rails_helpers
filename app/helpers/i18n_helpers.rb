@@ -37,6 +37,11 @@ module I18nHelpers
   #   t_model              => 'Konto'   # when called in patients_controller views
   #
   # Using pluralization:
+  #
+  # For working pluralization, there needs to be the keys :one, and :other in
+  # de.activerecord.models.client.one, de.activerecord.models.client.other
+  # English will allways pluralize, becaus ruby does that for us.
+  #
   #   t_model(Client, count: 2)   => 'Kunden' # when called from another controllers views
   #   t_model(count: 2)           => 'Kunden' # when called in clients_controller views
   #
