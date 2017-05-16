@@ -34,21 +34,25 @@ module I18nHelpers
   # Example:
   #   t_model(Account)     => 'Konto'
   #   t_model(Account.new) => 'Konto'
-  #   t_model              => 'Konto' # when called in patients_controller views
+  #   t_model              => 'Konto'   # when called in patients_controller views
   #
-  def t_model(model = nil)
-    if model.is_a? ActiveModel::Naming
-      return model.model_name.human
-    elsif model.class.is_a? ActiveModel::Naming
-      return model.class.model_name.human
-    elsif model.is_a? Class
-      model_name = model.name.underscore
-    elsif model.nil?
-      model_name = controller_name.singularize
-    else
-      model_name = model.class.name.underscore
-    end
-    I18n::translate(model_name, :scope => [:activerecord, :models])
+  # Using pluralization:
+  #   t_model(Client, count: 2)   => 'Kunden' # when called from another controllers views
+  #   t_model(count: 2)           => 'Kunden' # when called in clients_controller views
+  #
+  def t_model(model = nil, count: 1)
+    return translate_model(model, 1).pluralize if locale.to_s == 'en' && count > 1
+    translate_model(model, count)
+  end
+
+  def translate_model(model, count)
+    I18n.translate(model_i18n_key(model), scope: [:activerecord, :models], count: count)
+  end
+
+  def model_i18n_key(model)
+    return controller_name.singularize.to_sym if model.nil?
+    return model.name.underscore.to_sym if model.is_a? Class
+    model.class.name.underscore.to_sym
   end
 
   # Returns translated title for current +action+ on +model+.
