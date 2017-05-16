@@ -8,6 +8,7 @@ Rails i18n view helpers for things like crud actions, models and and attributes.
 - [Examples](#examples)
   - [t_attr](#t_attr)
   - [t_title](#t_title)
+  - [t_model](#t_model)
   - [t_action](#t_action)
   - [t_confirm_delete](#t_confirm_delete)
   - [t_select_prompt](#t_select_prompt)
@@ -42,6 +43,17 @@ t_title(:new)     # en: "New %{model}",     de: "%{model} erfassen"
 t_title(:create)  # en: "New %{model}",     de: "%{model} erfassen"
 t_title(:delete)  # en: "Delete %{model}",  de: "%{model} löschen"
 t_title(:destroy) # en: "Delete %{model}",  de: "%{model} löschen"
+```
+
+### t_model
+
+t_model(model = nil, count: 1)
+
+```ruby
+t_model                   # en: 'Account', de: 'Konto'   # if called in account_controller views
+t_model(count: 2)         # en: 'Accounts', de: 'Konten' # if called in account_controller views
+t_model(Client)           # en: 'Client', de: 'Kunde'
+t_model(Client, count: 2) # en: 'Clients', de: 'Kunden'
 ```
 
 ### t_action
