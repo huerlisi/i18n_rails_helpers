@@ -17,13 +17,24 @@ module I18nHelpers
   #   t_attr('first_name', Patient) => 'Vorname'
   #   t_attr('first_name')          => 'Vorname' # when called in patients_controller views
   #
-  def t_attr(attribute, model = nil)
-    if model.is_a? Class
-      model_class = model
-    elsif model.nil?
-      model_class = controller_name.classify.constantize
-    end
-    model_class.human_attribute_name(attribute)
+  # Using pluralization:
+  #
+  # For working pluralization, there needs to be the keys :one, and :other in
+  # de.activerecord.attributes.client.visit.one, de.activerecord.attributes.client.visit.other
+  # English will allways pluralize, because ruby does that for us.
+  #
+  #   t_attr(:meeting, count: 2)           => 'Besuch'  # when called in clients_controller views
+  #   t_attr(:meeting, Client, count: 2)   => 'Besuche' # when called from another controllers views
+  #
+  def t_attr(attribute, model = nil, count: 1)
+    model_class = model if model.is_a? Class
+    model_class = controller_name.classify.constantize if model.nil?
+    return model_class.human_attribute_name(attribute, count: count).pluralize if en_plural?
+    model_class.human_attribute_name(attribute, count: count)
+  end
+
+  def en_plural?(count)
+    locale == :en && count > 1
   end
 
   # Returns translated name for the given +model+.
@@ -46,7 +57,7 @@ module I18nHelpers
   #   t_model(count: 2)           => 'Kunden' # when called in clients_controller views
   #
   def t_model(model = nil, count: 1)
-    return translate_model(model, 1).pluralize if locale.to_s == 'en' && count > 1
+    return translate_model(model, 1).pluralize if en_plural?
     translate_model(model, count)
   end
 

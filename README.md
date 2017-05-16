@@ -26,10 +26,15 @@ gem 'i18n_rails_helpers'
 
 ### t_attr
 
+t_attr(attribute, model = nil, count: 1)
+
 ```ruby
-t_attr('first_name', Patient) # en: 'First name' de: 'Vorname' - when called from views of any controller
-t_attr('first_name')          # en: 'First name' de: 'Vorname' - when called in patients_controller views
-t_attr(:first_name)           # en: 'First name' de: 'Vorname' - can also be called with symbols
+t_attr('first_name', Patient)     # en: 'First name' de: 'Vorname' - when called from views of any controller
+t_attr('first_name')              # en: 'First name' de: 'Vorname' - when called in patients_controller views
+t_attr(:visit)                    # en: 'Visit'      de: 'Besuch'  - can also be called with symbols
+t_attr(:visit, count: 1)          # en: 'Visit'      de: 'Besuch'  - when called in patients_controller views
+t_attr(:visit, count: 2)          # en: 'Visits'     de: 'Besuche' - when called in patients_controller views
+t_attr(:visit, Patient, count: 2) # en: 'Visits'     de: 'Besuche' - when called from views of any controller
 ```
 
 ### t_title
