@@ -49,8 +49,10 @@ module I18nHelpers
   end
 
   def find_model_key(model = nil)
-    if model.is_a?(ActiveModel::Naming) || model.class.is_a?(ActiveModel::Naming)
+    if model.is_a? ActiveModel::Naming 
       model.model_name.singular
+    elsif model.class.is_a? ActiveModel::Naming
+      model.class.model_name.singular
     elsif model.is_a? Class
       model.name.underscore
     elsif model.nil?
