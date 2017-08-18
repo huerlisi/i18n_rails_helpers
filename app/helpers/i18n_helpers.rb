@@ -31,24 +31,33 @@ module I18nHelpers
   # If no +model+ is given, it uses the controller name to guess the model by
   # singularize it. +model+ can be both a class or an actual instance.
   #
+  # Parameter counts default returns singular default or default model translation if
+  # translation keys activerecord.models.model_name.one is not present.
+  #
+  # If count > 1 is passed it will return the plural translation,
+  # provided with activerecord.models.model_name.other.
+  #
   # Example:
   #   t_model(Account)     => 'Konto'
   #   t_model(Account.new) => 'Konto'
   #   t_model              => 'Konto' # when called in patients_controller views
+  #   t_model(count: 2)    => 'Kontos' # when activerecord.models.account.other is present
+  #   t_model(count: 2)    => 'Konto' # when activerecord.models.account.other isn't present
   #
-  def t_model(model = nil)
-    if model.is_a? ActiveModel::Naming
-      return model.model_name.human
-    elsif model.class.is_a? ActiveModel::Naming
-      return model.class.model_name.human
+  def t_model(model = nil, count: 1)
+    I18n.translate(find_model_key(model), scope: [:activerecord, :models], count: count)
+  end
+
+  def find_model_key(model = nil)
+    if model.is_a?(ActiveModel::Naming) || model.class.is_a?(ActiveModel::Naming)
+      model.model_name.singular
     elsif model.is_a? Class
-      model_name = model.name.underscore
+      model.name.underscore
     elsif model.nil?
-      model_name = controller_name.singularize
+      controller_name.singularize
     else
-      model_name = model.class.name.underscore
+      model.class.name.underscore
     end
-    I18n::translate(model_name, :scope => [:activerecord, :models])
   end
 
   # Returns translated title for current +action+ on +model+.
