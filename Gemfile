@@ -21,6 +21,7 @@ group :tools do
   # gem 'pry-debugger', :platform => [:mri_19]
 
   # QA
+  gem 'overcommit'
   gem 'rubocop'
   gem 'rubocop-rspec'
 end
