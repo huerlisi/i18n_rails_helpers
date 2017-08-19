@@ -5,7 +5,7 @@ sudo: false
 script: "bundle exec rake"
 
 rvm:
-  - 2.2.0
+  - 2.4.1
 
 env:
   - DB=sqlite
