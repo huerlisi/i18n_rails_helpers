@@ -1,3 +1,9 @@
+2.0.2
+=====
+* Make t_model, t_attr, t_action available in the Controllers
+* redirect_notice method for controllers
+* new enum attribute translation methods
+
 2.0.0
 =====
 FIXES:
