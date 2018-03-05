@@ -4,6 +4,10 @@ en:
     select_prompt:  "Select %{model}"
 
   crud:
+    notices:
+      create: "%{model} %{record}created."
+      update: "%{model} %{record}changed."
+      destroy: "%{model} %{record}deleted."
     title:
       index:  "%{model} index"
       edit:   "Edit %{model}"
