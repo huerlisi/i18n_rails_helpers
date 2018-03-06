@@ -1,10 +1,10 @@
 module I18nHelpers
   # Returns translated identifier
   def t_page_head
-    if params[:id] && resource
-      format('%s %s', t_title, resource.to_s)
+    if params[:id] and resource
+      return "%s %s" % [t_title, resource.to_s]
     else
-      t_title
+      return t_title
     end
   end
 
@@ -49,7 +49,7 @@ module I18nHelpers
   end
 
   def find_model_key(model = nil)
-    if model.is_a? ActiveModel::Naming
+    if model.is_a? ActiveModel::Naming 
       model.model_name.singular
     elsif model.class.is_a? ActiveModel::Naming
       model.class.model_name.singular
@@ -110,7 +110,7 @@ module I18nHelpers
   #
   def t_action(action = nil, model = nil)
     action ||= action_name
-    I18n.translate(action, scope: 'crud.action', model: t_model(model))
+    I18n::translate(action, :scope => 'crud.action', :model => t_model(model))
   end
 
   # Returns translated deletion confirmation for +record+.
@@ -121,7 +121,7 @@ module I18nHelpers
   #   t_confirm_delete(@account) => 'Konto Kasse wirklich löschen'
   #
   def t_confirm_delete(record)
-    I18n.translate('messages.confirm_delete', model: t_model(record), record: record.to_s)
+    I18n::translate('messages.confirm_delete', :model => t_model(record), :record => record.to_s)
   end
 
   # Returns translated drop down field prompt for +model+.
@@ -132,6 +132,6 @@ module I18nHelpers
   #   t_select_prompt(Account) => 'Konto auswählen'
   #
   def t_select_prompt(model = nil)
-    I18n.translate('messages.select_prompt', model: t_model(model))
+    I18n::translate('messages.select_prompt', :model => t_model(model))
   end
 end
