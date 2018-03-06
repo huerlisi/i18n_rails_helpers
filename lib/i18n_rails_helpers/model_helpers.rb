@@ -18,7 +18,7 @@ module I18nRailsHelpers
       defined_enums.each do |enum_attr, values|
         self.class.send(:define_method, "#{enum_attr}_t") { t_enum(enum_attr) }
         self.class.send(:define_method, "#{enum_attr.pluralize}_t") do
-          public_send(:t_enum_values, enum_attr, values)
+          t_enum_values(enum_attr, values)
         end
       end
     end
