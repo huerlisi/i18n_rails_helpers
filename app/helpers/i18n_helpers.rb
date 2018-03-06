@@ -1,10 +1,10 @@
 module I18nHelpers
   # Returns translated identifier
   def t_page_head
-    if params[:id] and resource
-      return "%s %s" % [t_title, resource.to_s]
+    if params[:id] && resource
+      "#{t_title} #{resource}"
     else
-      return t_title
+      t_title
     end
   end
 
@@ -18,12 +18,8 @@ module I18nHelpers
   #   t_attr('first_name')          => 'Vorname' # when called in patients_controller views
   #
   def t_attr(attribute, model = nil)
-    if model.is_a? Class
-      model_class = model
-    elsif model.nil?
-      model_class = controller_name.classify.constantize
-    end
-    model_class.human_attribute_name(attribute)
+    model ||= controller_name.classify.constantize
+    model.human_attribute_name(attribute)
   end
 
   # Returns translated name for the given +model+.
@@ -37,18 +33,16 @@ module I18nHelpers
   #   t_model              => 'Konto' # when called in patients_controller views
   #
   def t_model(model = nil)
-    if model.is_a? ActiveModel::Naming
-      return model.model_name.human
-    elsif model.class.is_a? ActiveModel::Naming
-      return model.class.model_name.human
-    elsif model.is_a? Class
-      model_name = model.name.underscore
-    elsif model.nil?
-      model_name = controller_name.singularize
-    else
-      model_name = model.class.name.underscore
-    end
-    I18n::translate(model_name, :scope => [:activerecord, :models])
+    return model.model_name.human if model.is_a? ActiveModel::Naming
+    return model.class.model_name.human if model.class.is_a? ActiveModel::Naming
+    model_key = if model.is_a? Class
+                  model.name.underscore
+                elsif model.nil?
+                  controller_name.singularize
+                else
+                  model.class.name.underscore
+                end
+    I18n.t("activerecord.models.#{model_key}")
   end
 
   # Returns translated title for current +action+ on +model+.
@@ -67,19 +61,15 @@ module I18nHelpers
   #   #{controller_name}.#{action}.title
   #
   # Example:
-  #   t_title('new', Account') => 'Konto anlegen'
-  #   t_title('delete')        => 'Konto löschen' # when called in accounts_controller views
-  #   t_title                  => 'Konto ändern'  # when called in accounts_controller edit view
+  #   t_title('new', Account) => 'Konto anlegen'
+  #   t_title('delete')       => 'Konto löschen' # when called in accounts_controller views
+  #   t_title                 => 'Konto ändern'  # when called in accounts_controller edit view
   #
   def t_title(action = nil, model = nil)
-    action ||= action_name
-    if model
-      context = model.name.pluralize.underscore
-    else
-      context = controller_name.underscore
-    end
-
-    I18n::translate("#{context}.#{action}.title", :default => [:"crud.title.#{action}"], :model => t_model(model))
+    model_key = model&.model_name&.i18n_key || model&.class&.model_name&.i18n_key ||
+      controller_name.underscore
+    I18n.t("#{model_key}.#{action || action_name}.title",
+      default: [:"crud.title.#{action || action_name}"], model: t_model(model))
   end
   alias :t_crud :t_title
 
@@ -95,8 +85,7 @@ module I18nHelpers
   #   t_action                  => 'Ändern'  # when called in an edit view
   #
   def t_action(action = nil, model = nil)
-    action ||= action_name
-    I18n::translate(action, :scope => 'crud.action', :model => t_model(model))
+    I18n.t("crud.action.#{action || action_name}", model: t_model(model))
   end
 
   # Returns translated deletion confirmation for +record+.
@@ -107,7 +96,7 @@ module I18nHelpers
   #   t_confirm_delete(@account) => 'Konto Kasse wirklich löschen'
   #
   def t_confirm_delete(record)
-    I18n::translate('messages.confirm_delete', :model => t_model(record), :record => record.to_s)
+    I18n.t('messages.confirm_delete', model: t_model(record), record: record.to_s)
   end
 
   # Returns translated drop down field prompt for +model+.
@@ -118,6 +107,6 @@ module I18nHelpers
   #   t_select_prompt(Account) => 'Konto auswählen'
   #
   def t_select_prompt(model = nil)
-    I18n::translate('messages.select_prompt', :model => t_model(model))
+    I18n.t('messages.select_prompt', model: t_model(model))
   end
 end
