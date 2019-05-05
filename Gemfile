@@ -15,6 +15,8 @@ gem 'rails'
 group :tools do
   # Debugger
   gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 
   # Disabled debuggers as there seems no proper way to get this working.
   # gem 'pry-byebug', :platform => [:mri_20, :mri_21, :mri_22]
@@ -22,6 +24,6 @@ group :tools do
 
   # QA
   gem 'overcommit'
-  gem 'rubocop'
-  gem 'rubocop-rspec'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 end
