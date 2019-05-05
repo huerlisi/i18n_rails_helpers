@@ -9,8 +9,7 @@ module I18nRailsHelpers
   # Use this to configure I18nRailsHelpers in an initializer.
   #
   #     I18nRailsHelpers.setup do |config|
-  #       config.contextual_class = 'pull-right'
-  #       config.contextual_link_class = 'btn-sm'
+  #       config.option = 'value'
   #     end
   #
   def self.setup
