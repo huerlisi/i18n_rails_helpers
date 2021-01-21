@@ -2,12 +2,19 @@ require 'rails'
 require 'i18n_rails_helpers/model_helpers'
 require 'i18n_rails_helpers/controller_helpers'
 
+require 'action_view_helpers/i18n_helpers'
+require 'action_view_helpers/contextual_link_helpers'
+require 'action_view_helpers/list_link_helpers'
+
 module I18nRailsHelpers
   class Engine < Rails::Engine
     initializer 'i18n_rails_helpers.helper' do
-      ActionView::Base.send :include, I18nHelpers
-      ActionView::Base.send :include, ContextualLinkHelpers
-      ActionView::Base.send :include, ListLinkHelpers
+      ActiveSupport.on_load(:action_view) do
+        include I18nHelpers
+        include ContextualLinkHelpers
+        include ListLinkHelpers
+      end
+
       ActionController::Base.class_eval { include ControllerHelpers }
 
       ActiveRecord::Base.class_eval do
