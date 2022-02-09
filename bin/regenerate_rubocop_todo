@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bin/rubocop --regenerate-todo --exclude-limi 7000 --auto-gen-only-exclude --no-auto-gen-timestamp

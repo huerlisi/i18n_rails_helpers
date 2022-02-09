@@ -1,5 +1,19 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rake
+
 AllCops:
-  TargetRubyVersion: 2.4.1
+  TargetRubyVersion: 2.7
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  NewCops: enable
+  UseCache: true
+  CacheRootDirectory: tmp/rubocop
   Exclude:
     - 'db/schema.rb'
     - 'db/migrate/*'
@@ -8,7 +22,6 @@ AllCops:
     - vendor/**/*
     - Rakefile
     - config/boot.rb
-  DisplayCopNames: true
 
 Rails:
   Enabled: true
@@ -28,29 +41,12 @@ Layout/MultilineOperationIndentation:
 
 Style/AsciiComments:
   Enabled: false
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
-Metrics/ClassLength:
-  Exclude:
-    - 'test/*'
-Metrics/MethodLength:
-  Exclude:
-    - 'db/migrate/*'
-    - 'test/*'
-    - 'db/seeds.rb'
 Metrics/AbcSize:
   Max: 19
-  Exclude:
-    - 'db/migrate/*'
-Metrics/BlockLength:
-  Exclude:
-    - 'db/seeds.rb'
 
-Metrics/BlockLength:
-  Exclude:
-    - 'test/system/*'
-
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedLastArgumentHashStyle: ignore_implicit
 
 Style/ClassAndModuleChildren:
@@ -59,7 +55,7 @@ Style/ClassAndModuleChildren:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Style/RegexpLiteral:
