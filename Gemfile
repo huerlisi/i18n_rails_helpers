@@ -10,7 +10,7 @@ gemspec
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-gem 'rails'
+gem 'rails', '~> 6.0.0'
 
 group :tools do
   # Debugger
@@ -23,5 +23,8 @@ group :tools do
   # QA
   gem 'overcommit'
   gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rake'
   gem 'rubocop-rspec'
 end

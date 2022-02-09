@@ -1,0 +1,9 @@
+version: 3.0.2
+
+services:
+  ruby:
+    image: ruby:2.6.9
+    platform: linux/amd64
+    volumes:
+      - ./:/app
+    working_dir: /app
