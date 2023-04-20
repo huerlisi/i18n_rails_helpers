@@ -1,7 +1,7 @@
 2.1.0
 =====
 * Minimum required Rails version lifted to 6.0.0
-* Switch to maintained ruby versions only: 2.6, 2.7, 3.0
+* Switch to maintained ruby versions only: 2.7, 3.0
 
 2.0.2
 =====
