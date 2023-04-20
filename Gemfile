@@ -12,13 +12,16 @@ gemspec
 
 gem 'rails', '~> 6.0.0'
 
-group :tools do
+group :test, :development do
+  gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'sqlite3'
+end
+
+group :tools, :test, :development do
   # Debugger
   gem 'pry-rails'
-
-  # Disabled debuggers as there seems no proper way to get this working.
-  # gem 'pry-byebug', :platform => [:mri_20, :mri_21, :mri_22]
-  # gem 'pry-debugger', :platform => [:mri_19]
 
   # QA
   gem 'overcommit'
